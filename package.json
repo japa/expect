@@ -1,6 +1,6 @@
 {
   "name": "@japa/expect",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Assertion package built on top of Jest expect",
   "main": "build/index.js",
   "files": [

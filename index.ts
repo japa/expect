@@ -22,18 +22,15 @@ export function expect() {
   return function (Context: typeof TestContextContract, Test: typeof TestContract) {
     Context.getter('expect', () => jestExpect, true)
 
-    Test.dispose(function (_, hasError, errors) {
+    Test.dispose(function (_, hasError) {
       if (hasError) {
         return
       }
 
       const jestErrors = jestExpect.extractExpectedAssertionsErrors()
-      jestErrors.forEach((jestError) => {
-        errors.push({
-          phase: 'test',
-          error: jestError.error,
-        })
-      })
+      if (jestErrors.length) {
+        throw jestErrors[0].error
+      }
     })
   }
 }

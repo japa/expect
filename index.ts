@@ -8,7 +8,7 @@
  */
 
 import { default as jestExpect } from 'expect'
-import type { Test as TestContract, TestContext as TestContextContract } from '@japa/core'
+import type { PluginFn } from '@japa/runner'
 
 /**
  * Jest expect type
@@ -16,13 +16,13 @@ import type { Test as TestContract, TestContext as TestContextContract } from '@
 export type Expect = typeof jestExpect
 
 /**
- * Expect plugin for japa/runner
+ * Expect plugin for "@japa/runner"
  */
-export function expect() {
-  return function (Context: typeof TestContextContract, Test: typeof TestContract) {
-    Context.getter('expect', () => jestExpect, true)
+export function expect(): PluginFn {
+  return function (_, __, { TestContext, Test }) {
+    TestContext.getter('expect', () => jestExpect, true)
 
-    Test.dispose(function (_, hasError) {
+    Test.dispose(function (___, hasError) {
       if (hasError) {
         return
       }

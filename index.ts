@@ -34,3 +34,9 @@ export function expect(): PluginFn {
     })
   }
 }
+
+declare module '@japa/runner' {
+  interface TestContext {
+    expect: Expect
+  }
+}

@@ -34,21 +34,6 @@ test('test title', ({ expect }) => {
 })
 ```
 
-## TypeScript types
-TypeScript will not provide intellisense for the `expect` property, since it is added at runtime.
-
-However, you can define the static type using the TypeScript module augmentation. Create a new file `japa-types.ts` and write the following code inside it.
-
-```ts
-import { Expect } from '@japa/expect'
-
-declare module '@japa/runner' {
-  interface TestContext {
-    expect: Expect
-  }
-}
-```
-
 [github-actions-url]: https://github.com/japa/expect/actions/workflows/test.yml "github-actions"
 
 [github-actions-image]: https://img.shields.io/github/workflow/status/japa/expect/test?style=for-the-badge

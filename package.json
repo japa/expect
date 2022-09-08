@@ -52,6 +52,9 @@
     "prettier": "^2.7.1",
     "typescript": "^4.8.2"
   },
+  "peerDependencies": {
+    "@japa/runner": "^2.1.1"
+  },
   "mrmConfig": {
     "core": false,
     "license": "MIT",

@@ -7,18 +7,21 @@
  * file that was distributed with this source code.
  */
 
-import { default as jestExpect } from 'expect'
 import type { PluginFn } from '@japa/runner'
+import { jestExpectWithMessage } from './src/with_message/index'
+import { PluginOptions } from './src/types'
 
 /**
  * Jest expect type
  */
-export type Expect = typeof jestExpect
+export type Expect = ReturnType<typeof jestExpectWithMessage>
 
 /**
  * Expect plugin for "@japa/runner"
  */
-export function expect(): PluginFn {
+export function expect(options?: PluginOptions): PluginFn {
+  const jestExpect = jestExpectWithMessage(options?.messages)
+
   return function (_, __, { TestContext, Test }) {
     TestContext.getter('expect', () => jestExpect, true)
 

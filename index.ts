@@ -7,22 +7,19 @@
  * file that was distributed with this source code.
  */
 
-import { default as jestExpect } from 'expect'
-import type { PluginFn } from '@japa/runner'
-
-/**
- * Jest expect type
- */
-export type Expect = typeof jestExpect
+import { expect as jestExpect } from 'expect'
+import type { PluginFn } from '@japa/runner/types'
+import { Test, TestContext } from '@japa/runner/core'
+import { Expect } from './src/types.js'
 
 /**
  * Expect plugin for "@japa/runner"
  */
 export function expect(): PluginFn {
-  return function (_, __, { TestContext, Test }) {
+  return function () {
     TestContext.getter('expect', () => jestExpect, true)
 
-    Test.dispose(function (___, hasError) {
+    Test.executed(function (_, hasError) {
       if (hasError) {
         return
       }
@@ -35,7 +32,7 @@ export function expect(): PluginFn {
   }
 }
 
-declare module '@japa/runner' {
+declare module '@japa/runner/core' {
   interface TestContext {
     expect: Expect
   }

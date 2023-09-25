@@ -34,9 +34,9 @@ test('test title', ({ expect }) => {
 })
 ```
 
-[github-actions-url]: https://github.com/japa/expect/actions/workflows/test.yml "github-actions"
+[github-actions-url]: https://github.com/japa/expect/actions/workflows/checks.yml "github-actions"
 
-[github-actions-image]: https://img.shields.io/github/actions/workflow/status/japa/expect/test.yml?style=for-the-badge
+[github-actions-image]: https://img.shields.io/github/actions/workflow/status/japa/expect/checks.yml?style=for-the-badge
 
 [npm-image]: https://img.shields.io/npm/v/@japa/expect.svg?style=for-the-badge&logo=npm
 [npm-url]: https://npmjs.org/package/@japa/expect "npm"

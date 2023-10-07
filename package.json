@@ -1,7 +1,7 @@
 {
   "name": "@japa/expect",
   "description": "Assertion package built on top of Jest expect",
-  "version": "3.0.0-1",
+  "version": "3.0.0",
   "engines": {
     "node": ">=18.16.0"
   },

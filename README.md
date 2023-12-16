@@ -5,6 +5,8 @@
 
 An assertion library built on top of [jest-expect](https://jestjs.io/docs/expect).
 
+#### [Complete API documentation](https://japa.dev/docs/plugins/expect)
+
 ## Installation
 Install the package from the npm registry as follows:
 

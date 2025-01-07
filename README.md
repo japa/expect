@@ -12,7 +12,9 @@ Install the package from the npm registry as follows:
 
 ```sh
 npm i @japa/expect
+```
 
+```sh
 yarn add @japa/expect
 ```
 

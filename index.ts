@@ -10,7 +10,6 @@
 import { expect as jestExpect } from 'expect'
 import type { PluginFn } from '@japa/runner/types'
 import { Test, TestContext } from '@japa/runner/core'
-import { Expect } from './src/types.js'
 
 /**
  * Expect plugin for "@japa/runner"
@@ -34,6 +33,6 @@ export function expect(): PluginFn {
 
 declare module '@japa/runner/core' {
   interface TestContext {
-    expect: Expect
+    expect: typeof jestExpect
   }
 }

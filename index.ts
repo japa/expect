@@ -19,13 +19,14 @@ export function expect(): PluginFn {
     TestContext.getter('expect', () => jestExpect, true)
 
     Test.executed(function (_, hasError) {
-      if (hasError) {
-        return
-      }
+      // Must call this whether or not the test passed because internally it 
+      // resets the assertion count and otherwise the assertion count will be
+      // carried into a subsequent test
+      const jestErrors = jestExpect.extractExpectedAssertionsErrors();
 
-      const jestErrors = jestExpect.extractExpectedAssertionsErrors()
-      if (jestErrors.length) {
-        throw jestErrors[0].error
+      // Throw assertion count errors only if the test otherwise passed
+      if (jestErrors.length && !hasError) {
+        throw jestErrors[0].error;
       }
     })
   }
